@@ -37,14 +37,13 @@ public class PlayerControl: MonoBehaviour
 
     private void Update()
     {
-        
+        Shot();
     }
 
     private void FixedUpdate()
     {
         Move();
         Jump();
-        Shot();
     }
 
     /// <summary>
@@ -114,18 +113,6 @@ public class PlayerControl: MonoBehaviour
     }
 
     /// <summary>
-    /// ’n–Ê‚ÌÚG”»’è‚ğTag‚Åæ“¾
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.CompareTag("Ground"))
-        {
-            isGround = true;
-        }
-    }
-
-    /// <summary>
     /// ’e‚ğ¶¬‚·‚éˆ—
     /// </summary>
     private void Shot()
@@ -134,6 +121,29 @@ public class PlayerControl: MonoBehaviour
         {
             GameObject newBullet = Instantiate(bullet, this.transform.position, Quaternion.identity);
             shotRequested = false;
+        }
+    }
+
+    /// <summary>
+    /// ÚG”»’è‚ğTag‚Åæ“¾
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnCollisionEnter(Collision collision)
+    {
+        //’n–Ê‚Æ‚ÌÚG”»’è
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGround = true;
+        }
+
+        //“G‚Æ‚ÌÚG”»’è
+        //“G‚ÉG‚ê‚½‚çHP‚ğŒ¸‚ç‚·
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if (UiManager.instance != null)
+            {
+                UiManager.instance.GetHPNum();
+            }
         }
     }
 }

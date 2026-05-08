@@ -4,8 +4,7 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody rb;
     [SerializeField] private float bulletSpeed = 10f;
-    private float destroyTime = 5f;
-    private float destroyTimer = 0f;
+    [SerializeField] private float destroyTime;
 
     private void Start()
     {
@@ -14,7 +13,6 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        destroyTimer += Time.deltaTime;
         Shot();
     }
 
@@ -26,11 +24,7 @@ public class Bullet : MonoBehaviour
         //弾が前方に進む処理
         rb.linearVelocity = transform.forward * bulletSpeed;
         //デストロイ時間を過ぎたら削除
-        if (destroyTimer > destroyTime)
-        {
-            Destroy(gameObject);
-            destroyTimer = 0f;
-        }
+        Destroy(gameObject, destroyTime);
     }
 
     /// <summary>

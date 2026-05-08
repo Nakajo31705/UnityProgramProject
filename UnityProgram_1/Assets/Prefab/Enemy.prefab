@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6805444799624711623}
   - component: {fileID: 8695331499515583888}
   m_Layer: 0
-  m_Name: Enemy1
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6849a6602bce14286d5469afb631c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  moveSpeed: 3
+  destroyTime: 3
 --- !u!54 &8695331499515583888
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,5 +153,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
